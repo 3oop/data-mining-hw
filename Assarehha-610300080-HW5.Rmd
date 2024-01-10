@@ -1,0 +1,80 @@
+---
+title: "Data Mining HW5"
+author: "Pooria Assarehha"
+date: "2023-12-11"
+output: pdf_document
+---
+
+## Ex 5.1
+-- 2 sample t-test for difference in each part's proportion
+-- Chi-2 homogen of fit
+-- 2 sample t-test for difference in each part's mean
+
+## Ex 5.2
+$H_0: \bar{x}_1 - \bar{x}_2 = 0$
+
+$$t_{data} = \frac{\bar{x}_1 - \bar{x}_2}{\sqrt{\frac{s^2_1}{n_1} + \frac{s^2_2}{n_2}}}$$
+
+```{r}
+tdata = (20.5 - 20.4)/sqrt(
+  (5.2^2 / 2000) + (4.9^2 / 600)
+)
+2*pt(tdata, 2600-1) < qt(0.10/2, df=2600 -1)
+```
+do not reject $H_0$
+
+## Ex 5.4
+```{r}
+trainp = c(800, 750, 450)
+testp = c(240, 250, 110)
+
+expect = (trainp / sum(trainp) )*sum(testp)
+xi = sum((testp - expect)^2 / expect)
+
+1 - pchisq(xi, df=2) < qchisq(0.10/2, df=2)
+```
+We reject $H_0$, test proportions are not homogen to train.
+
+## Ex 5.6
+(a) even with equal means, variances effect how evident the sample is to reject or not reject the null hyp.
+
+(b) 
+- between : variability in sample means
+- within : variability in each group
+
+(c) $S^2$, variance or standard deviation
+
+(d) when $S_b$ >> $S_w$ , Reject $H_0$ : equal means
+
+## Ex 5.7
+
+```{r}
+credit = c(100, 110, 90, 100)
+debit = c(80, 120, 90, 110)
+check = c(50, 70, 80, 80)
+
+means = sapply(list(credit, debit, check), mean)
+s_w = sapply(list(credit, debit, check), sd)
+s_b = sum(sapply(means, length)*(means - mean(means))^2)/(length(means)-1)
+s_w
+s_b
+```
+
+## Ex 5.10
+
+
+# Hands-on Analysis
+
+## Ex 5.11
+## Ex 5.13
+## Ex 5.15
+## Ex 5.16
+## Ex 5.17
+## Ex 5.18
+## Ex 5.19
+## Ex 5.20
+## Ex 5.21
+## Ex 5.22
+## Ex 5.23
+
+

@@ -1,0 +1,152 @@
+---
+title: "Assarehha-610300080-HW2"
+author: "Pooria Assarehha"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Chapter 2 Exercises 
+
+## Ex 7
+
+The missing data could have a pattern and omitting them may create bias.
+
+## Ex 9
+
+It preserves the mean and variance, but it may create data that does not exist.
+
+## Ex 24
+
+75 is the outlier.
+
+```{r}
+stock.price.data = c(10,7,20 ,12,75, 15, 9, 18, 4, 12, 8, 14)
+mu = mean(stock.price.data)
+Z = (stock.price.data - mu)/sd(stock.price.data)
+stock.price.data[Z>3 | Z< -3]
+```
+
+```{r}
+Q1 = quantile(stock.price.data, 0.25)
+Q3 = quantile(stock.price.data, 0.75)
+iqr = IQR(stock.price.data)
+stock.price.data[(stock.price.data > (Q3 + 1.5*iqr)) | (stock.price.data < (Q1 - 1.5*iqr))]
+```
+
+## Ex 26
+
+```{r}
+print(paste0("with the outlier -> mean: ", 
+mean(stock.price.data), " median: ",
+median(stock.price.data)))
+print(paste0("without outlier -> mean: ",
+mean(stock.price.data[!(Z>3 | Z< -3)]), " median: ",
+median(stock.price.data[!(Z>3 | Z< -3)])))
+```
+the median is unchaged after ommiting the outlier. but the mean is reduced by ~30%.
+
+## Ex 28 
+```{r}
+dada = c(1,1,1,3,3,7)
+width = 3
+binned = list("1-4" =c(1,1,1,3), "4-7" = c() , "7-10" = c(7))
+binned
+```
+## Ex 29
+
+(1,1) , (1,3) , (3,7)
+
+## Ex 30
+
+the first has unbalanced bin population, the second does not segregate values.
+
+
+## Ex 33
+```{r}
+churn <- read.csv(file="../churn.csv", stringsAsFactors = FALSE)
+sum(is.na(churn), axis=0)
+```
+No missing value?
+
+## Ex 34
+```{r}
+unique(churn$State)
+unique(churn$Area.Code)
+```
+## Ex 35
+```{r}
+plot(churn$CustServ.Calls)
+```
+
+## Ex 36
+
+```{r}
+calls = churn$CustServ.Calls
+Z.calls = (calls - mean(calls))/sd(calls)
+calls[Z.calls > 3 | Z.calls < -3]
+c(-3, 3)*sd(calls) + mean(calls)
+```
+```{r}
+q1 = quantile(calls, 0.25)
+q3 = quantile(calls, 0.75)
+iqr = IQR(calls)
+
+c(q1 - 1.5*iqr, q3+1.5*iqr)
+```
+
+## Ex 37 
+```{r}
+daymin = churn$Day.Mins 
+daymin = (daymin - mean(daymin))/sd(daymin)
+head(daymin)
+```
+## Ex 38
+```{r}
+skw <- function(data){3*(mean(data) - median(data))/sd(data)}
+skw(churn$Day.Mins)
+skw(daymin)
+```
+Z transformation preserves skewness.
+It's nearly symmetric.
+
+## Ex 39
+```{r}
+m = mean(churn$Day.Mins)
+s = sd(churn$Day.Mins)
+hist(churn$Day.Mins)
+
+qqnorm(churn$Day.Mins, col="red", datax = TRUE)
+qqline(churn$Day.Mins, col="blue", datax=TRUE)
+```
+Symmetric deviation in the end edges?
+
+## Ex 40
+```{r}
+hist(churn$Intl.Mins)
+qqnorm(churn$Night.Mins, col="red",
+       datax = TRUE,
+       main = "Normal Q-Q Plot of Z-Transform of Int Mins")
+qqline(churn$Night.Mins, col="blue", datax=TRUE)
+
+churn$Zero.Intl = churn$Intl.Mins == 0
+nonzerointlmin = churn$Intl.Mins[!churn$Zero.Intl]
+hist(nonzerointlmin)
+qqnorm(nonzerointlmin, col="red")
+qqline(nonzerointlmin)
+```
+
+we can see a little improvement.
+
+## Ex 41
+
+```{r}
+nmins = churn$Night.Mins
+zscore <- function(data){(data - mean(data))/sd(data)}
+z.nmins = zscore(nmins)
+boxplot(z.nmins, horizontal = TRUE, xaxp=c(min(z.nmins),max(z.nmins), 4))
+
+```
+
+

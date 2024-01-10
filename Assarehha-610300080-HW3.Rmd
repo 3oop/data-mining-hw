@@ -1,0 +1,69 @@
+---
+title: "Assarehha-610300080-HW2"
+author: "Pooria Assarehha"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+# Chapter 3 Exercises 
+
+### Ex 6
+A stacked/multilayer clustered bar chart. Can be normalized too.
+
+### Ex 7
+it means that they may have covariance in case of linear interaction, but nonlinear
+interaction can take place too. 
+
+## Ex 8
+a normalized overlayed histogram
+
+## Ex 9
+we better not use normalized hist without the non-normalized counterpart. 
+it benefits us with the proportion of the variables.
+
+## Ex 13
+compared to equal width and equal freq bins, this method gives us a sense of their joint distribution?
+
+## Ex 15
+normalizing/studentizing both vars
+
+## Ex 19
+we better remove perfectly correlated vars. 
+
+## Ex 20
+  - (a) num vs cat
+  - (b) num/cat
+  - (c) num/cat
+  - (d) cat
+  - (e) num
+  - (f) num vs num 
+  - (g) cat
+   (h) cat
+
+# Hands-on
+
+## Ex 22
+
+```{r}
+adult = read.csv("~/Documents/Amar 1400 UT/4021_Fall 2023/Data Mining/adult.csv")
+str(adult)
+```
+race, sex, marital.status, income are categorical.
+age, hours.per.week and education.num are continuous integers.
+
+## Ex 25
+
+## Ex 26
+
+## Ex 28
+
+## Ex 30
+
+## Ex 32
+
+## Ex 33
+
+## Ex 34

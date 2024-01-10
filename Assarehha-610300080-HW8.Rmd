@@ -1,0 +1,22 @@
+---
+title: "Data Mining Chapter 8 Homework"
+author: "Pooria Assarehha"
+date: "2024-01-05"
+output: pdf_document
+---
+
+# Discovering Knowledge in Data Chapter 8
+
+## Ex 8.4
+## Ex 8.5
+## Ex 8.6
+## Ex 8.7
+## Ex 8.8
+## Ex 8.9
+## Ex 8.10
+
+# Hands-on Analysis
+
+## Ex 8.11
+## Ex 8.12
+## Ex 8.13

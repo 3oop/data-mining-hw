@@ -1,0 +1,47 @@
+---
+title: "Data Mining HW6"
+author: "Pooria Assarehha"
+date: "2023-12-31"
+output: pdf_document
+---
+
+# Discovering knowledge in Data Chapter 6
+
+## Ex 6.1
+
+In Supervised tasks we usually have a target variable
+but for unsupervised tasks we don't.
+
+Classification is Supervised
+
+Clustering is Unsupervised
+Estimating, Predicting and Association are can be both.
+
+## Ex 6.2
+
+Training set is used for building the model (tuning parameters of the model)
+Validation set is used for tuning the hyper-parameters of the model, checking the variance of the model.
+Test set is used to check the bias of the model after validation.
+
+## Ex 6.4
+
+as we increase model complexity, it may become a better fit to train data (less bias) but does poorly on different data (high variance) that means we have reached overfitting. underfitting occurs when we have high bias.
+
+## Ex 6.6
+
+$$\frac{400 + n}{10000 + n} = \frac{20}{100} \quad \Rightarrow \quad 40k + 100n = 200k + 20n \quad \Rightarrow 80n = 160k \quad \Rightarrow  n = 2000$$
+
+## Ex 6.7
+
+The test data set should never be balanced. The test data set represents new
+data that the models have not seen yet. Certainly the real world will not balance
+tomorrow’s data for the convenience of our classification models; therefore, the test
+data set itself should not be balanced. Note that all model evaluation will take place
+using the test data set, so that the evaluative measures will all be applied to unbalanced
+(real-world-like) data.
+
+## Ex 6.9
+Suppose our data mining model resulted in a predicted churn rate of $9.99\%$. This represents only a $14.49\% – 9.99\% = 4.5\%$
+absolute decrease in the churn rate, but a $4.5\% / 14.49\% = 31\%$ relative decrease in
+the churn rate.
+

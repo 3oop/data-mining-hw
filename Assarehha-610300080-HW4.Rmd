@@ -1,0 +1,53 @@
+---
+title: "Data Mining HW4"
+author: "Pooria Assarehha"
+date: "2023-12-10"
+output: pdf_document
+---
+
+## Ex 4.10
+margin of error is decreased either by decreasing $\alpha$ , which is not recommended
+and by increasing number of samples (n). 
+
+## Ex 4.14
+p value can be interpreted as "the probability of finding a sample stronger than the current in rejecting H0". if its small then it is already strong. 
+
+## Ex 4.17
+
+$\alpha = 5 \Rightarrow Z_{1-\frac{\alpha}{2}} \approx 2$
+
+```{r}
+qnorm(0.975)
+```
+
+- n = 25 $20 \pm 2 \sqrt{\frac{5}{25}}$
+- n = 100 $20 \pm 2 \sqrt{\frac{5}{100}}$
+- n = 400 $20 \pm  2 \sqrt{\frac{5}{400}}$
+
+## Ex 4.20
+
+```{r}
+p = 0.1; n = 1000
+p + c(-1,1)*qnorm(0.95)*sqrt(p*(1-p)/n)
+p + c(-1,1)*qnorm(0.975)*sqrt(p*(1-p)/n)
+p + c(-1,1)*qnorm(0.995)*sqrt(p*(1-p)/n)
+
+```
+
+## Ex 4.23
+```{r}
+1 - pnorm((55 - 50)/(25/sqrt(100))) < qnorm(1 - 0.05)
+```
+
+if p-value is lower than $P(Z_{\alpha})$ then Reject $H_0: \mu > 50$ 
+
+## Ex 4.26
+
+$H_0: p < 0.25 \quad , \quad \alpha = 0.01$
+
+```{r}
+Zdata = (240/1000 - 0.25)/sqrt(0.24*(1-0.24)/1000)
+if (Zdata < 0 ) pnorm(Zdata) < qnorm(1 - 0.01) else 1 - pnorm(Zdata) < qnorm(1 - 0.01)
+pnorm(Zdata)
+```
+reject $H_0$
