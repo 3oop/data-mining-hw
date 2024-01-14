@@ -1,0 +1,41 @@
+---
+title: "Data Mining Classwork Chapter 10"
+author: "Pooria Assarehha"
+date: "2024-01-12"
+output: pdf_document
+---
+
+```{r, message=FALSE}
+#install.packages("cluster")
+library(cluster)
+```
+
+```{r}
+data <- c(2, 5, 9, 15, 16, 18, 25, 33, 33, 45)
+names(data) <- data # to make them appear in the dendogram
+avg = agnes(
+  data,
+  diss = FALSE,
+  stand = FALSE,
+  method = "average", 
+)
+
+avg$merge
+
+```
+
+from : <https://stat.ethz.ch/R-manual/R-devel/library/cluster/html/agnes.object.html>
+
+>>merge 	
+an (n-1) by 2 matrix, where n is the number of observations. Row i of merge describes the merging of clusters at step i of the clustering. If a number j in the row is negative, then the single observation |j| is merged at this stage. If j is positive, then the merger is with the cluster formed at stage j of the algorithm.
+
+
+```{r}
+dend <- as.dendrogram(avg)
+
+plot(dend,
+  xlab = "Index of Data Points",
+  ylab = "Steps",
+  main = "Average-Linkage Clustering"
+)
+```

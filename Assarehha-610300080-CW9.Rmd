@@ -1,0 +1,67 @@
+---
+title: "Data Mining Classwork 9"
+author: "Pooria Assarehha"
+date: "2024-01-13"
+output: pdf_document
+---
+
+```{r}
+x = matrix(c(0.4, 0.2, 0.7), ncol = 3)
+y = 0.8
+x
+```
+
+```{r}
+W1 = matrix(
+  c(0.5, 0.6, 0.8, 0.6, 0.7, 0.9, 0.8, 0.4),
+  ncol = 2, byrow=FALSE
+  )
+colnames(W1) <- c("A", "B")
+rownames(W1) <- c("W0", "W1", "W2", "W3")
+W1
+```
+
+```{r}
+W2 = matrix(
+  c(0.5, 0.9, 0.9),
+  ncol = 1
+  )
+colnames(W2) <- c("Z")
+rownames(W2) <- c("W0Z", "WAZ", "WBZ")
+W2
+```
+
+```{r}
+net1 = cbind(1, x) %*% W1 
+O1 = 1 / (1 +  exp(-net1))
+net2 = cbind(1, O1) %*% W2 
+O2 = 1 / (1 +  exp(-net2))
+O1
+O2
+```
+
+```{r}
+deltaZ = O2*(1-O2)*(y-O2)
+deltaZ
+
+deltaAB = O1*(1-O1)
+deltaA = deltaAB[1,1]*W2[2,1]*deltaZ
+deltaB = deltaAB[1,2]*W2[3,1]*deltaZ
+
+deltaA
+deltaB
+
+```
+
+```{r}
+eta = 0.1
+
+dW2 = eta* rbind(1, t(O1))  %*% deltaZ
+dW2
+a = eta * W1[,1] * c(deltaA)
+b = eta * W1[,2] * c(deltaB)
+dW1 = cbind(a, b)
+colnames(dW1) <- c("A", "B")
+W1
+dW1
+```
