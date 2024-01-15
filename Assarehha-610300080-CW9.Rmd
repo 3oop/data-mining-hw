@@ -58,10 +58,29 @@ eta = 0.1
 
 dW2 = eta* rbind(1, t(O1))  %*% deltaZ
 dW2
-a = eta * W1[,1] * c(deltaA)
-b = eta * W1[,2] * c(deltaB)
-dW1 = cbind(a, b)
+
+dW1 = eta* t(cbind(1, x)) %*% cbind(deltaA, deltaB)
 colnames(dW1) <- c("A", "B")
-W1
 dW1
 ```
+
+these are the updated weights for node B:
+
+```{r}
+W1 = W1 + dW1
+W2 = W2 + dW2
+W1[,2]
+```
+
+```{r}
+updated_net1 = cbind(1, x) %*% W1 
+updated_O1 = 1 / (1 +  exp(-updated_net1))
+updated_net2 = cbind(1, updated_O1) %*% W2 
+updated_O2 = 1 / (1 +  exp(-updated_net2))
+new_Loss = (updated_O2 - 0.8)^2
+Loss = (O2 - 0.8)^2
+Loss
+new_Loss
+```
+
+Loss has Slightly decreased. after one iteration of Gradient Decent.
