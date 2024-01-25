@@ -1,0 +1,49 @@
+---
+title: "Data Mining Chapter 9 HW"
+author: "Pooria Assarehha"
+date: "2024-01-24"
+output: pdf_document
+---
+
+# Discovering Knowledge in Data Chapter 9 Exercises
+
+## Ex 9.1
+
+## Ex 9.10
+
+Large Values may cause gradient decent to never converge, and always shoot over the minimum.
+
+small values may take a lot of time and waste energy. 
+
+# Hands-on Analysis
+
+## Ex 9.12
+
+```{r}
+setwd("~/Documents/Amar 1400 UT/4021_Fall 2023/Data Mining/Assignment")
+churn = read.csv('../churn.csv', stringsAsFactors = TRUE)
+
+str(churn)
+```
+
+Phone Field is uninformative. 2 level factors must be mapped to 0 and 1. 
+
+```{r}
+churn = churn[-4]
+summary(churn)
+```
+Voice mail Plan and Voice mail msgs have effect.
+
+```{r}
+for(col in 1:length(churn)){
+  if(is.numeric(churn[,col])){
+    print("numeric")
+    churn[col] <- (churn[, col] - mean(churn[,col]))/sd(,churn[col])
+  }
+}
+class(churn[,6])
+str(churn)
+```
+
+
+## Ex 9.13

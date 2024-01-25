@@ -1,0 +1,75 @@
+---
+title: "Data Mining Chapter 10 HW"
+author: "Pooria Assarehha"
+date: "2024-01-19"
+output: pdf_document
+---
+
+# Discovering Knowledge in Data Chapter 10
+
+## Ex 10.4
+
+at each Step, we calculate the distance of each 2 data points. Distance is simply the difference. at each step we merge those with minimum distance for any of members of 2 clusters. 
+
+Step 0, each record is a cluster, those with zero distance become one cluster.
+
+Step 1, distance between 1 and 0s is 1. 9 and 10s is 1. they will merge.
+
+Step 2, d(3,1) = 2, d(7,9) = 2 => merge
+
+Step 3, d(3,6) = 3 => merge
+
+```{r, message=FALSE}
+library(cluster)
+dat = c(0,0,1,3,3,6,7,9,10,10)
+names(dat) <- dat
+dend = as.dendrogram(agnes(dat, method = "single"))
+plot(
+  dend,
+  xlab="Data points",
+  ylab="Steps",
+  main = "Single-Linkage Clustering"
+)
+```
+
+## Ex 10.6
+
+```{r}
+data = matrix(
+  c(2,0,1,2,2,2,3,2,2,3,3,3,2,4,3,4,4,4,3,5),
+  byrow = TRUE,
+  ncol = 2
+  )
+colnames(data)<- c("x","y")
+rownames(data) <- c("a", "B", "c", "d", "e", "f", "g", "h", "i", "j")
+plot(data, xlab="x", ylab="y", main="Data Points")
+```
+
+$$
+$$
+
+```{r}
+kmeans(data, 2)
+```
+
+## Ex 10.7
+
+
+
+# Hands-on Analysis
+
+## Ex 10.12
+
+```{r}
+rm(list=ls())
+setwd("~/Documents/Amar 1400 UT/4021_Fall 2023/Data Mining/Assignment")
+dat <- read.csv("../cereals.csv", stringsAsFactors = TRUE)
+dat = dat[-c(1,16)]
+str(dat)
+```
+
+```{r}
+#km <- kmeans(dat, 5)
+```
+
+## Ex 10.13
