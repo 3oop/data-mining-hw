@@ -32,18 +32,32 @@ Phone Field is uninformative. 2 level factors must be mapped to 0 and 1.
 churn = churn[-4]
 summary(churn)
 ```
-Voice mail Plan and Voice mail msgs have effect.
+Voice mail Plan and Voice mail msgs have inter effect.
 
 ```{r}
-for(col in 1:length(churn)){
-  if(is.numeric(churn[,col])){
-    print("numeric")
-    churn[col] <- (churn[, col] - mean(churn[,col]))/sd(,churn[col])
-  }
+for(col in 2:length(churn)){
+  if(is.numeric(churn[,col]))
+    churn[,col] <- (churn[,col] - mean(churn[,col]))/sd(churn[,col])
+  else {levels(churn[,col]) <- c(0,1); churn[,col] <- as.integer(churn[,col])}
 }
-class(churn[,6])
 str(churn)
 ```
 
+```{r, message=FALSE}
+library(caret)
+dmyvars <- as.data.frame(model.matrix(~0+churn$State , churn[,1]))
+colnames(dmyvars) <- gsub("churn\\$", "", colnames(dmyvars))
+df = cbind(dmyvars,churn[-1])
+str(df)
+```
+
+```{r}
+library(neuralnet)
+net <- neuralnet(Churn. ~ ., data = df, hidden = 70, rep = 1 )
+```
+
+```{r}
+plot(net, show.weights = FALSE)
+```
 
 ## Ex 9.13
