@@ -53,10 +53,10 @@ str(df)
 
 ```{r}
 library(neuralnet)
-net <- neuralnet(Churn. ~ ., data = df, hidden = 70, rep = 1 )
+net <- neuralnet(Churn. ~ ., data = df, hidden = 10, rep = 1 )
 ```
 
-```{r}
+```{r, fig.height=100}
 plot(net, show.weights = FALSE)
 ```
 

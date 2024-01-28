@@ -1,0 +1,103 @@
+---
+title: "Data Mining Chapter 12 Homework"
+author: "Pooria Assarehha"
+date: "2024-01-26"
+output: pdf_document
+---
+
+# Discovering knowledge in Data Chapter 12
+
+## Ex 12.4
+
+
+| $F_1$     | Count |
+| --------- | ----- | 
+| Sunny     | 5     | 
+| Overcast  | 4     | 
+| Rain      | 5     | 
+| Hot       | 4     | 
+| Mild      | 7     | 
+| Cool      | 4     | 
+| High      | 7     | 
+| Normal    | 7     | 
+| Windy:True| 6     | 
+| Windy:False| 8     | 
+| Play:Yes  | 9      |
+| Play:No    | 5     |
+
+## Ex 12.5
+
+2-itemsets: $F_1 \times F_1$
+
+| 2-itemsets                 |Count |
+| -------------------------- |----- |
+|HumNormal, NonWindy         | 4    |
+|NonWindy,PlayYes            | 6    |
+|Rain, NonWindy              | 3    |
+|Overcast, PlayNo            | 0    |
+|HumNormal, Cool             |   ,
+|PlayYes, Overcast|,
+|Rain, PlayYes|,
+|HumHigh, PlayNo|,
+|PlayNo, Sunny|,
+|Cool, NonWindy|,
+|Mild, Sunny|,
+|PlayNo, NonWindy|,
+|Cool, Windy|,
+|HumHigh, Hot|,
+|HumHigh, PlayYes|,
+|HumHigh, Rain|,
+|PlayNo, PlayYes|,
+|Rain, PlayNo|,
+|NonWindy, Sunny|,
+|PlayNo, Windy|,
+|Mild, Windy|,
+|Overcast, NonWindy|,
+|HumNormal, Mild|,
+|Windy, Sunny|,
+|Cool, Sunny|,
+|HumNormal, PlayYes|,
+|HumNormal, Rain|,
+|PlayYes, Hot|,
+|HumHigh, Windy|,
+|Rain, Hot|,
+|HumHigh, Cool|,
+|PlayNo, Cool|,
+|PlayYes, Mild|,
+|Rain, Mild|,
+|HumNormal, PlayNo|,
+|HumHigh, Sunny|,
+|Overcast, Windy|,
+|Cool, Overcast|,
+|HumNormal, Hot|,
+|Hot, Windy|,
+|PlayYes, Windy|,
+|Rain, Windy|,
+|Cool, PlayYes|,
+|HumNormal, Sunny|,
+|Rain, Cool|,
+|PlayNo, Mild|,
+|HumHigh, Mild|,
+|HumHigh, NonWindy|,
+|Hot, NonWindy|,
+|Overcast, Mild|,
+|Hot, Sunny|,
+|PlayYes, Sunny|,
+|Rain, Sunny|,
+|HumNormal, Windy|,
+|HumHigh, Overcast|,
+|Hot, Overcast|,
+|Mild, NonWindy|,
+|HumNormal, Overcast|,
+|PlayNo, Hot|
+
+
+
+
+## Ex 12.6
+## Ex 12.7
+## Ex 12.8
+## Ex 12.9
+## Ex 12.11
+
+# Hands-on Analysis

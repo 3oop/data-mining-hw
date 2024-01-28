@@ -1,0 +1,16 @@
+---
+title: "Data Mining Chapter 14 Homework"
+author: "Pooria Assarehha"
+date: "2024-01-27"
+output: pdf_document
+---
+
+# Discovering Knowledge in Data Chapter 14 Exercises
+
+## Ex 14.1
+## Ex 14.2
+## Ex 14.3
+## Ex 14.4
+## Ex 14.5
+
+# Hands-on Analysis
