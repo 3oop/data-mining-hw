@@ -7,6 +7,16 @@ output: pdf_document
 
 # Discovering knowledge in Data Chapter 12
 
+```{r, message=FALSE}
+df = read.csv("table12-8.csv", stringsAsFactors = TRUE)
+library(arules)
+```
+
+```{r}
+rules <- apriori(df[-1])
+inspect(sort(rules))
+```
+
 ## Ex 12.4
 
 
@@ -27,71 +37,26 @@ output: pdf_document
 
 ## Ex 12.5
 
+
 2-itemsets: $F_1 \times F_1$
 
-| 2-itemsets                 |Count |
-| -------------------------- |----- |
-|HumNormal, NonWindy         | 4    |
-|NonWindy,PlayYes            | 6    |
-|Rain, NonWindy              | 3    |
-|Overcast, PlayNo            | 0    |
-|HumNormal, Cool             |   ,
-|PlayYes, Overcast|,
-|Rain, PlayYes|,
-|HumHigh, PlayNo|,
-|PlayNo, Sunny|,
-|Cool, NonWindy|,
-|Mild, Sunny|,
-|PlayNo, NonWindy|,
-|Cool, Windy|,
-|HumHigh, Hot|,
-|HumHigh, PlayYes|,
-|HumHigh, Rain|,
-|PlayNo, PlayYes|,
-|Rain, PlayNo|,
-|NonWindy, Sunny|,
-|PlayNo, Windy|,
-|Mild, Windy|,
-|Overcast, NonWindy|,
-|HumNormal, Mild|,
-|Windy, Sunny|,
-|Cool, Sunny|,
-|HumNormal, PlayYes|,
-|HumNormal, Rain|,
-|PlayYes, Hot|,
-|HumHigh, Windy|,
-|Rain, Hot|,
-|HumHigh, Cool|,
-|PlayNo, Cool|,
-|PlayYes, Mild|,
-|Rain, Mild|,
-|HumNormal, PlayNo|,
-|HumHigh, Sunny|,
-|Overcast, Windy|,
-|Cool, Overcast|,
-|HumNormal, Hot|,
-|Hot, Windy|,
-|PlayYes, Windy|,
-|Rain, Windy|,
-|Cool, PlayYes|,
-|HumNormal, Sunny|,
-|Rain, Cool|,
-|PlayNo, Mild|,
-|HumHigh, Mild|,
-|HumHigh, NonWindy|,
-|Hot, NonWindy|,
-|Overcast, Mild|,
-|Hot, Sunny|,
-|PlayYes, Sunny|,
-|Rain, Sunny|,
-|HumNormal, Windy|,
-|HumHigh, Overcast|,
-|Hot, Overcast|,
-|Mild, NonWindy|,
-|HumNormal, Overcast|,
-|PlayNo, Hot|
-
-
+| 2-itemsets            | Count | 2-itemsets            | Count | 2-itemsets            | Count | 2-itemsets                | Count |
+| ------------------    | ----- | ----------------------| ----- | -------------------   | ----- | -----------------------   | ----- |
+|HumNormal, NonWindy    | 4     |   PlayNo, PlayYes     |   ,   |   PlayNo, Cool        |   ,   |     HumHigh, Rain         |    ,  |
+|NonWindy,PlayYes       | 6     |   Rain, PlayNo        |   ,   |   PlayYes, Mild       |   ,   |     HumHigh, Mild         |    ,  |
+|Rain, NonWindy         | 3     |   NonWindy, Sunny     |   ,   |   Rain, Mild          |   ,   |     HumHigh, NonWindy     |    ,  |
+|Overcast, PlayNo       | 0     |   PlayNo, Windy       |   ,   |   HumNormal, PlayNo   |   ,   |     Hot, NonWindy         |    ,  |
+|HumNormal, Cool        |       |   Mild, Windy         |   ,   |   HumHigh, Sunny      |   ,   |     Overcast, Mild        |    ,  |
+|PlayYes, Overcast      |       |   Overcast, NonWindy  |   ,   |   Overcast, Windy     |   ,   |     Hot, Sunny            |    ,  |
+|Rain, PlayYes          |,      |   HumNormal, Mild     |   ,   |   Cool, Overcast      |   ,   |     PlayYes, Sunny        |    ,  |
+|HumHigh, PlayNo        |,      |   Windy, Sunny        |   ,   |   HumNormal, Hot      |   ,   |     Rain, Sunny           |    ,  |
+|PlayNo, Sunny          |,      |   Cool, Sunny         |   ,   |   Hot, Windy          |   ,   |     HumNormal, Windy      |    ,  |
+|Cool, NonWindy         |,      |   HumNormal, PlayYes  |   ,   |   PlayYes, Windy      |   ,   |     HumHigh, Overcast     |    ,  |
+|Mild, Sunny            |,      |   HumNormal, Rain     |   ,   |   Rain, Windy         |   ,   |     Hot, Overcast         |    ,  |
+|PlayNo, NonWindy       |,      |   PlayYes, Hot        |   ,   |   Cool, PlayYes       |   ,   |     Mild, NonWindy        |    ,  |
+|Cool, Windy            |,      |   HumHigh, Windy      |   ,   |   HumNormal, Sunny    |   ,   |     HumNormal, Overcast   |    ,  |
+|HumHigh, Hot           |,      |   Rain, Hot           |   ,   |   Rain, Cool          |   ,   |     PlayNo, Hot           |    ,  |
+|HumHigh, PlayYes       |,      |   HumHigh, Cool       |   ,   |   PlayNo, Mild        |   ,   |                           |       |
 
 
 ## Ex 12.6
